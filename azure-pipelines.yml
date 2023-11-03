@@ -30,6 +30,7 @@ steps:
 
 - task: DotNetCoreCLI@2
   inputs:
+  displayName: Publish
     command: publish
     publishWebProjects: True
     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
@@ -39,3 +40,31 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)/mywebsite'
     ArtifactName: 'mywebsite'
     publishLocation: 'Container'
+
+
+- script: |
+    echo "Installing Terraform"
+    curl -sL https://releases.hashicorp.com/terraform/1.1.0/terraform_1.1.0_linux_amd64.zip -o terraform.zip
+    unzip terraform.zip
+    sudo mv terraform /usr/local/bin/
+    terraform version
+  displayName: 'Install Terraform'
+
+- script: |
+    echo "Initializing Terraform"
+    terraform init -backend-config="storage_account_name=$(terraformstate112)" -backend-config="container_name=$(terraformstate)" -backend-config="access_key=$(sp=r&st=2023-11-03T20:12:26Z&se=2023-11-04T04:12:26Z&spr=https&sv=2022-11-02&sr=c&sig=q9SnJH%2FfqEWiLAp7Kf3ob3lNsoXHVk3wv0xUumuKpr4%3D)" -backend-config="key=terraform.tfstate"
+  displayName: 'Initialize Terraform'
+  env:
+    BackendStorageAccountName: 'terraformstate112'
+    BackendContainerName: 'terraformstate'
+    BackendAccessKey: $(sp=r&st=2023-11-03T20:12:26Z&se=2023-11-04T04:12:26Z&spr=https&sv=2022-11-02&sr=c&sig=q9SnJH%2FfqEWiLAp7Kf3ob3lNsoXHVk3wv0xUumuKpr4%3D)
+
+- script: |
+    echo "Creating Terraform Plan"
+    terraform plan -out=tfplan
+  displayName: 'Create Terraform Plan'
+
+- script: |
+    echo "Applying Terraform Plan"
+    terraform apply -auto-approve tfplan
+  displayName: 'Apply Terraform Plan'
