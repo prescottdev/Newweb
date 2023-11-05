@@ -61,13 +61,13 @@ steps:
     BackendAccessKey: $(sp=r&st=2023-11-03T20:12:26Z&se=2023-11-04T04:12:26Z&spr=https&sv=2022-11-02&sr=c&sig=q9SnJH%2FfqEWiLAp7Kf3ob3lNsoXHVk3wv0xUumuKpr4%3D)
 
 - script: |
-    az login --service-principal -u "$(clientId)" -p "$(clientSecret)"  --tenant "$(tenant)"
+    az login --service-principal -u "$(clientId)" -p "$(clientSecret)"  --tenant "$(tenantId)"
     az storage blob download --container-name "terraformstate" --name "newmain.tf" --file "newmain.tf" --account-name "terraformstate112"
   displayName: 'Download Nested Terraform Template from Blob Storage'
   env:
     clientId: $(62ba6d2f-4192-4cf5-a00d-42328f7d7dfd)
     clientSecret: $(nJP8Q~_EqLNHRP2WxOe.b1HjVrKytOXVprvW1ca9)
-    tenant: "$(04e77d4-81e7-4c16-ab44-935220bed6dd)"
+    tenantId: "$(04e77d4-81e7-4c16-ab44-935220bed6dd)"
     
 
 - script: |
