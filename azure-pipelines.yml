@@ -65,7 +65,7 @@ steps:
     az storage blob download --container-name "terraformstate" --name "newmain.tf" --file "newmain.tf" --account-name "terraformstate112"
   displayName: 'Download Nested Terraform Template from Blob Storage'
   env:
-    clientId: $(62ba6d2f-4192-4cf5-a00d-42328f7d7dfd)
+    clientId: $(606e824b-aaf7-4b4e-9057-b459f6a4436d)
     clientSecret: $(nJP8Q~_EqLNHRP2WxOe.b1HjVrKytOXVprvW1ca9)
     tenantId: $(104e77d4-81e7-4c16-ab44-935220bed6dd)
 
