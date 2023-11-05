@@ -27,6 +27,9 @@ steps:
     projects: '**/*.csproj'
     arguments: '--configuration $(buildConfiguration)'
 
+- script: ls $(Build.ArtifactStagingDirectory)
+  displayName: 'List Artifacts'
+
 - task: DotNetCoreCLI@2
   displayName: Publish
   inputs:
