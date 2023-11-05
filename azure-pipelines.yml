@@ -39,8 +39,8 @@ steps:
 
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)/mywebsite'
-    ArtifactName: 'mywebsite'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/WebApplication1'
+    ArtifactName: 'WebApplication1'
     publishLocation: 'Container'
 
 
