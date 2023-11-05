@@ -46,11 +46,10 @@ steps:
 
 - script: |
     echo "Installing Terraform"
-    curl -sL https://releases.hashicorp.com/terraform/1.1.0/terraform_1.1.0_linux_amd64.zip -o terraform.zip
-    unzip terraform.zip
-    sudo mv terraform /usr/local/bin/
+    choco install terraform --version 1.1.0
     terraform version
   displayName: 'Install Terraform'
+  continueOnError: false
 
 - script: |
     echo "Initializing Terraform"
