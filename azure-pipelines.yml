@@ -16,7 +16,6 @@ variables:
 
 steps:
 - task: NuGetToolInstaller@1
- 
 - task: NuGetCommand@2
   inputs:
     restoreSolution: '$(solution)'
@@ -30,12 +29,12 @@ steps:
 
 - task: DotNetCoreCLI@2
   inputs:
-  displayName: Publish
+  displayName: Publishh
     command: publish
     publishWebProjects: True
     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
 
- - task: PublishBuildArtifacts@1
+- task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)/mywebsite'
     ArtifactName: 'mywebsite'
