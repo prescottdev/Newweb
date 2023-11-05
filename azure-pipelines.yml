@@ -64,7 +64,7 @@ steps:
     az login --service-principal -u "$(clientId)" -p "$(clientSecret)"  --tenant "$(tenantId)"
     az storage blob download --container-name "terraformstate" --name "newmain.tf" --file "newmain.tf" --account-name "terraformstate112"
   displayName: 'Download Nested Terraform Template from Blob Storage'
-env:
+  env:
     clientId: $(62ba6d2f-4192-4cf5-a00d-42328f7d7dfd)
     clientSecret: $(nJP8Q~_EqLNHRP2WxOe.b1HjVrKytOXVprvW1ca9)
     tenantId: "$(04e77d4-81e7-4c16-ab44-935220bed6dd)"
