@@ -1,15 +1,4 @@
-# ASP.NET Core (.NET Framework)
-- task: AzureResourceManagerTemplateDeployment@3
-  inputs:
-    deploymentScope: 'Resource Group'
-    azureResourceManagerConnection: 'AzureTraining (606e824b-aaf7-4b4e-9057-b459f6a4436d)'
-    subscriptionId: '606e824b-aaf7-4b4e-9057-b459f6a4436d'
-    action: 'Create Or Update Resource Group'
-    resourceGroupName: 'AzureTrainingDev1-rg'
-    location: 'East US'
-    templateLocation: 'URL of the file'
-    csmFileLink: 'https://terraformstate112.blob.core.windows.net/terraformstate/newmain.tf'
-    deploymentMode: 'Incremental'
+# ASP.NET Core (.NET Framework)'
 # Build and test ASP.NET Core projects targeting the full .NET Framework.
 # Add steps that publish symbols, save build artifacts, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
