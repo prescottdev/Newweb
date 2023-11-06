@@ -44,4 +44,23 @@ steps:
     publishLocation: 'Container'
 
 
+- script: |
+    echo "Installing Terraform"
+    choco install terraform --version 1.1.0
+    terraform version
+  displayName: 'Install Terraform'
+  continueOnError: false
+
+- script: |
+    echo "Initializing Terraform"
+    terraform init -backend-config="storage_account_name=$(terraformstate112)" -backend-config="container_name=$(terraformstate)" -backend-config="access_key=$(sp=r&st=2023-11-03T20:12:26Z&se=2023-11-04T04:12:26Z&spr=https&sv=2022-11-02&sr=c&sig=q9SnJH%2FfqEWiLAp7Kf3ob3lNsoXHVk3wv0xUumuKpr4%3D)" -backend-config="key=terraform.tfstate"
+  displayName: 'Initialize Terraform'
+  env:
+    BackendStorageAccountName: 'terraformstate112'
+    BackendContainerName: 'terraformstate'
+    BackendAccessKey: $(sp=r&st=2023-11-03T20:12:26Z&se=2023-11-04T04:12:26Z&spr=https&sv=2022-11-02&sr=c&sig=q9SnJH%2FfqEWiLAp7Kf3ob3lNsoXHVk3wv0xUumuKpr4%3D)
+
+
+
+
 
